@@ -60,6 +60,12 @@ async def set_weight(message: types.Message, state: FSMContext):
     await message.answer("Введите свой вес:")
 
 
+# Обработчик всех текстовых сообщений
+@dp.message_handler(content_types=types.ContentTypes.TEXT)
+async def all_messages(message: types.Message):
+    await message.reply("Вы написали: " + message.text)
+
+
 # Функция для расчета нормы калорий
 @dp.message_handler(state=UserState.weight)
 
